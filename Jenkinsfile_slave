@@ -30,6 +30,7 @@ pipeline {
                     }
                 
             }
+            }
 
             stage('Run Stage') {
                 steps {
@@ -43,4 +44,3 @@ pipeline {
         
         }
     }
-}
