@@ -5,9 +5,7 @@ pipeline {
             stage('Initialize Stage') {
                 steps {
                     echo 'Initial : Delete containers and images'
-                     dir('
-
-week10hw2') {
+                     dir('week10hw2') {
                         echo "Current path is  ${pwd()}"
                         sh 'docker-compose down --rmi all --volumes || true'
                      }
@@ -16,9 +14,7 @@ week10hw2') {
 
             stage('Build Stage'){
                 steps {
-                    dir('
-
-week10hw2') {
+                    dir('week10hw2') {
                         echo "Current path is ${pwd()}"
                         sh "docker-compose build"
                     }
@@ -27,9 +23,7 @@ week10hw2') {
 
             stage('Push Stage'){
                 steps {
-                    dir('
-
-week10hw2') {
+                    dir('week10hw2') {
                         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                             sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                         }
